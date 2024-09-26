@@ -12,7 +12,7 @@ module.exports = {
                 allowNull: false,
                 type: Sequelize.TEXT('long')
             },
-            contentMarkdow: {
+            contentMarkdown: {
                 allowNull: false,
                 type: Sequelize.TEXT('long')
             },
