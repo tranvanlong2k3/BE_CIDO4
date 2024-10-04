@@ -6,7 +6,10 @@ import emailService from './emailService';
 let postBookAppointment = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
-            if(!data.email || !data.doctorId || !data.timeType || !data.date){
+            if(!data.email || !data.doctorId || !data.timeType || !data.date
+
+                || !data.fullName
+            ){
                 resolve({
                     errCode: 1,
                     errMessage: 'Missing parameters !'
@@ -15,9 +18,10 @@ let postBookAppointment = (data) => {
 
                 await emailService.sendSimpleEmail({
                     reciverEmail: data.email,
-                    patientName: 'Trần Văn Long',
-                    time: '8:00 - 9:00 Thứ 7 5/10/2024',
-                    doctorName: 'Lio',
+                    patientName: data.fullName,
+                    time: data.timeString,
+                    doctorName: data.doctorName,
+                    language: data.language,
                     redirectLink: 'https://www.youtube.com/@tranvanlong7149'
                 })
 
